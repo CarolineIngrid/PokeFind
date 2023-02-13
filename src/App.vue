@@ -21,7 +21,7 @@
           v-for="pokemon in pokemons_filter.slice(0,8)"
           :key="pokemon.name"
         >
-        <v-card>
+        <v-card @click="show_dialog = !show_dialog">
           <v-row class="mx-0 d-flex justify-center">
             <img 
             :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${get_id(
@@ -74,7 +74,8 @@ export default {
   data(){
     return{
       pokemons: [],
-      search: ""
+      search: "",
+      show_dialog: false
     }
   },
 
