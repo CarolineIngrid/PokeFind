@@ -1,6 +1,16 @@
 <template>
   <v-app>
     <h1> POKEMON </h1>
+
+    <v-responsive
+    class="md-auto px-12 py-6"
+    >
+    <v-text-field
+      label="First name"
+      hide-details="auto"
+      solo
+    ></v-text-field>
+  </v-responsive>
       <v-container>
         <v-card>
           {{ pokemons }}
