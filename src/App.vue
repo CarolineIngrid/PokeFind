@@ -18,7 +18,7 @@
         <v-row>
         <v-col
           cols="3"
-          v-for="pokemon in pokemons_filter"
+          v-for="pokemon in pokemons_filter.slice(0,8)"
           :key="pokemon.name"
         >
         <v-card>
