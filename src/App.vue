@@ -5,12 +5,18 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
+
+  components: {},
+
   data: () => ({
     //
   }),
+
+  mounted (){
+    console.log("ALOO")
+  },
 };
 </script>
 
@@ -20,7 +26,7 @@ export default {
 	background: linear-gradient(to right, rgb(214, 197, 236), rgb(160, 203, 230));
 	color: white;
 	margin: 0;
-	/* font-family: rubik; */
+	/* font-family: rubik; **decidir depois a fonte*/
 }
 
 /* ---------- TIPOGRAFIA --------- */
