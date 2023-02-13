@@ -6,6 +6,7 @@
       class="md-auto px-12 py-6"
       >
       <v-text-field
+        v-model="search"
         label="Pesquise"
         hide-details="auto"
         solo>
@@ -13,30 +14,30 @@
     </v-responsive>
 
     <v-container>
-      <v-card>
-        <!-- {{ pokemons }} -->
+        <!-- {{ search }} -->
         <v-row>
         <v-col
           cols="3"
-          v-for="pokemon in pokemons.slice(0,12)"
+          v-for="pokemon in pokemons_filter"
           :key="pokemon.name"
         >
         <v-card>
-          <img 
-          :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${get_id(
-            pokemon
-          )}.png`"
-          :alt="pokemon.name"
-          width="60%">
-          
+          <v-row class="mx-0 d-flex justify-center">
+            <img 
+            :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${get_id(
+              pokemon
+            )}.png`"
+            :alt="pokemon.name"
+            width="60%">
+          </v-row>
+  
           <h2 class="text-center">{{ pokemon.name }}</h2>
           <!-- <PokemonCard :pokemon="pokemon" @clicked="show_pokemon" /> -->
         </v-card>
-        
           
         </v-col>
       </v-row>
-      </v-card>
+      
 
     </v-container>
 
@@ -47,15 +48,11 @@
 import axios from 'axios';
 export default {
   name: 'App',
-
   components: {},
-
-  // data: () => ({
-  //   //
-  // }),
   data(){
     return{
-      pokemons: []
+      pokemons: [],
+      search: ""
     }
   },
 
@@ -65,9 +62,16 @@ export default {
     });
   },
   methods: {
-    get_id(pokemon){
+    get_id(pokemon) {
       return pokemon.url.split("/")[6];
     }
+  },
+  computed: {
+      pokemons_filter() {
+      return this.pokemons.filter((item) => {
+        return item.name.includes(this.search);
+      });
+    },
   },
 };
 </script>
@@ -81,9 +85,11 @@ export default {
 	/* font-family: rubik; **decidir depois a fonte*/
 }
 
+
 /* ---------- TIPOGRAFIA --------- */
 h1{
+  align-self: center;
   color: yellow;
-  -webkit-text-stroke: 2px #000;
+  -webkit-text-stroke: 1px #000;
 }
 </style>
