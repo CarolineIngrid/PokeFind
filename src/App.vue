@@ -1,21 +1,34 @@
 <template>
   <v-app>
     <h1> POKEMON </h1>
+      <v-container>
+        <v-card>
+          {{ pokemons }}
+        </v-card>
+      </v-container>
   </v-app>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'App',
 
   components: {},
 
-  data: () => ({
-    //
-  }),
+  // data: () => ({
+  //   //
+  // }),
+  data(){
+    return{
+      pokemons: []
+    }
+  },
 
   mounted (){
-    console.log("ALOO")
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=10").then((response) => {
+      this.pokemons = response.data.results;
+    });
   },
 };
 </script>
